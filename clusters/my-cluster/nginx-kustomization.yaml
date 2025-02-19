@@ -1,7 +1,5 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
-metadata:
-  name: nginx-test
-  namespace: default
+
 resources:
   - nginx-deployment.yaml
