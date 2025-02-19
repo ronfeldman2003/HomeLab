@@ -6,7 +6,7 @@ metadata:
 data:
   values.yaml: |
     fullnameOverride: prometheus
-    
+
     defaultRules:
       create: true
       rules:
@@ -49,6 +49,7 @@ data:
       forceDeployDashboards: false
       defaultDashboardsEnabled: true
       defaultDashboardsTimezone: utc
+      replicas: 2
       serviceMonitor:
         enabled: true
       admin:
@@ -71,9 +72,7 @@ data:
     kubeControllerManager:
       enabled: true
       endpoints: # ips of servers 
-        - 192.168.30.38
-        - 192.168.30.39
-        - 192.168.30.40
+        - 192.168.68.151
 
     coreDns:
       enabled: true
@@ -84,9 +83,7 @@ data:
     kubeEtcd:
       enabled: true
       endpoints: # ips of servers
-        - 192.168.30.38
-        - 192.168.30.39
-        - 192.168.30.40
+        - 192.168.68.151
       service:
         enabled: true
         port: 2381
@@ -95,16 +92,12 @@ data:
     kubeScheduler:
       enabled: true
       endpoints: # ips of servers
-        - 192.168.30.38
-        - 192.168.30.39
-        - 192.168.30.40
+        - 192.168.68.151
 
     kubeProxy:
       enabled: true
       endpoints: # ips of servers
-        - 192.168.30.38
-        - 192.168.30.39
-        - 192.168.30.40
+        - 192.168.68.151ss
 
     kubeStateMetrics:
       enabled: true
