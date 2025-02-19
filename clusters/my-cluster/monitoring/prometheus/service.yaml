@@ -6,7 +6,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: prometheus  # Ensure this matches the labels of your Prometheus pods
+    app: prometheus-prometheus  # Ensure this matches the labels of your Prometheus pods
   ports:
     - protocol: TCP
       port: 9090
