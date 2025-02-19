@@ -12,3 +12,9 @@ spec:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
+  values:
+      server:
+        service:
+          type: NodePort  # Change to NodePort or LoadBalancer as needed
+          port: 300090            # The port on which Prometheus will be accessible
+          targetPort: 9090    # The port Prometheus listens on internally
