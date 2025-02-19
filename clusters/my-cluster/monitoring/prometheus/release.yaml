@@ -1,20 +1,18 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: prometheus
+  name: kube-prometheus-stack
   namespace: monitoring
 spec:
-  interval: 5m
+  interval: 5m0s
   chart:
     spec:
-      chart: prometheus
+      chart: kube-prometheus-stack
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
-  values:
-      server:
-        service:
-          type: NodePort  # Change to NodePort or LoadBalancer as needed
-          port: 300090            # The port on which Prometheus will be accessible
-          targetPort: 9090    # The port Prometheus listens on internally
+  valuesFrom:
+    - kind: ConfigMap
+      name: prometheus-values
+      valuesKey: values.yaml
