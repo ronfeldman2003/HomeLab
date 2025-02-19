@@ -12,7 +12,5 @@ spec:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
-  valuesFrom:
-    - kind: ConfigMap
-      name: prometheus-values
-      valuesKey: values.yaml
+  values:
+    - values.yaml
