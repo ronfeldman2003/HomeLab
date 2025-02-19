@@ -99,7 +99,7 @@ data:
     kubeProxy:
       enabled: true
       endpoints: # ips of servers
-        - 192.168.68.151ss
+        - 192.168.68.151
 
     kubeStateMetrics:
       enabled: true
