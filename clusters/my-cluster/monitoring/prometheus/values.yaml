@@ -49,7 +49,9 @@ data:
       forceDeployDashboards: false
       defaultDashboardsEnabled: true
       defaultDashboardsTimezone: utc
-      replicas: 2
+      replicas: 1
+      deploymentStrategy:
+        type: RollingUpdate
       serviceMonitor:
         enabled: true
       admin:
