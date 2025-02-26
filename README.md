@@ -8,4 +8,4 @@ GitOps with Flux CD – Automates deployment and configuration management.
 Monitoring & Observability – Includes Grafana for visualization.
 Simple & Scalable Structure – Uses a minimalistic Flux repository design for easy expansion.
 
-![Pixel Lab Setup](images/pixel-lab-setup.jpg)
+![Pixel Lab Setup](images/pixel-lab-setup.JPG)
