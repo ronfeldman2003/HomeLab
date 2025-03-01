@@ -17,4 +17,4 @@ spec:
       - name: obico
         image: koskit/obico-server:latest
         ports:
-        - containerPort: 80
+        - containerPort: 3334
