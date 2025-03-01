@@ -9,6 +9,6 @@ spec:
     app: obico  # Ensure this matches the labels of your Prometheus pods
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 3334
+      targetPort: 3334
       nodePort: 30100  # You can specify a particular NodePort or let Kubernetes assign one
