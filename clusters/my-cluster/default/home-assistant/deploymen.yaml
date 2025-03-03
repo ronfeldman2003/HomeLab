@@ -25,7 +25,7 @@ spec:
               name: config
           env:
             - name: TZ
-              value: "America/New_York"  # Change this to your timezone
+              value: "Asia/Jerusalem"  # Change this to your timezone
       volumes:
         - name: config
           persistentVolumeClaim:
