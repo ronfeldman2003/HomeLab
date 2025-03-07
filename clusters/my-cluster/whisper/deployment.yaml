@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wyoming-whisper
+  namespace: whisper
+  labels:
+    app: wyoming-whisper
+spec:
+  replicas: 1  #  Start with one replica.  You can scale this up later.
+  selector:
+    matchLabels:
+      app: wyoming-whisper
+  template:
+    metadata:
+      labels:
+        app: wyoming-whisper
+    spec:
+      containers:
+        - name: wyoming-whisper
+          image: rhasspy/wyoming-whisper:latest # Consider using a specific tag instead of :latest
+          ports:
+            - containerPort: 10300
+              name: whisper-port  # Give the port a name for clarity
+          command: ["/bin/sh", "-c"] #  This is often needed for complex commands
+          args:
+            - "wyoming-whisper --model tiny-int8 --language en" # Command and arguments
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data  #  Mount the volume to /data in the container
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: wyoming-whisper-pvc  #  The name of the PVC we'll create below
