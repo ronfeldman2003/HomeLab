@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wyoming-whisper-service
-  namespace: whisper
+  name: whisper-wyoming
+  namespace: speech-recognition
 spec:
-  type: NodePort
   selector:
-    app: wyoming-whisper
+    app: whisper-wyoming
   ports:
-    - port: 10300
-      targetPort: 10300
-      nodePort: 30125  # You can choose a different port between 30000-32767
-      
+  - port: 10300
+    targetPort: 10300
+    nodePort: 30300  # Node port between 30000-32767
+    protocol: TCP
+  type: NodePort 
