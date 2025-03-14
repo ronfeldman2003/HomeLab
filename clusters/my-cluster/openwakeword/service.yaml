@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wyoming-openwakeword
+  namespace: voice-assistants
+spec:
+  selector:
+    app: wyoming-openwakeword
+  ports:
+  - port: 10400
+    targetPort: 10400
+    nodePort: 30400  # Node port between 30000-32767
+    protocol: TCP
+  type: NodePort 

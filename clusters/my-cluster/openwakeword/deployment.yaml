@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wyoming-openwakeword
+  namespace: voice-assistants
+  labels:
+    app: wyoming-openwakeword
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wyoming-openwakeword
+  template:
+    metadata:
+      labels:
+        app: wyoming-openwakeword
+    spec:
+      containers:
+      - name: wyoming-openwakeword
+        image: rhasspy/wyoming-openwakeword:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 10400
+          name: wyoming
+        env:
+        - name: OPENWAKEWORD_MODEL
+          valueFrom:
+            configMapKeyRef:
+              name: wyoming-openwakeword-config
+              key: OPENWAKEWORD_MODEL
+        - name: WYOMING_UDP_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              name: wyoming-openwakeword-config
+              key: WYOMING_UDP_ENABLED
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: models-volume
+          mountPath: /app/openwakeword/models
+      volumes:
+      - name: models-volume
+        emptyDir: {}  # For development; consider using PVC for production

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wyoming-openwakeword-config
+  namespace: voice-assistants
+data:
+  OPENWAKEWORD_MODEL: "ok_nabu"  # Default model
+  WYOMING_UDP_ENABLED: "true"
