@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samba
+  namespace: home-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: samba
+  template:
+    metadata:
+      labels:
+        app: samba
+    spec:
+      containers:
+        - name: samba
+          image: dperson/samba:latest
+          ports:
+            - containerPort: 445
+              name: smb
+          env:
+            - name: TZ
+              value: "Asia/Jerusalem"
+            - name: USERID
+              value: "1000"
+            - name: GROUPID
+              value: "1000"
+            - name: USER
+              value: "hassio;password"  # Add a user with password for access
+            - name: WORKGROUP
+              value: "WORKGROUP"
+            - name: SHARE
+              value: "config;/config;yes;no;no;hassio;hassio"  # Share name;path;browsable;readonly;guest;users;admins
+          volumeMounts:
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: home-assistant-config
