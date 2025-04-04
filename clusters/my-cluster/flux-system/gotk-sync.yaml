@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
+    branch: swap-to-talos
   secretRef:
     name: flux-system
   url: ssh://git@github.com/ronfeldman2003/HomeLab
